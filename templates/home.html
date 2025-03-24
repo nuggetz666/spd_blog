@@ -1,18 +1,41 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-    <title>Our Blog</title>
+    <!-- Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta name="description" content="Welcome to Our Blog - A space for creativity, knowledge, and discussions." />
+    <meta name="author" content="Your Name or Organization" />
+
+    <!-- Title -->
+    <title>spd_blog</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo.png') }}">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" />
+    </noscript>
+
+    <!-- Inline CSS -->
     <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #4CAF50;
+            --hover-color: #3e8e41;
+            --text-color: white;
+        }
+
+        /* Global Styles */
         body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
-        
+
+        /* Wrapper Styles */
         #wrapper {
             display: flex;
             flex-direction: column;
@@ -23,25 +46,25 @@
             left: 0;
             right: 0;
             bottom: 0;
-            margin: -10px;
             padding: 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border-radius: 0;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-color);
             z-index: 1;
         }
 
+        /* Header Styles */
         h1 {
-            color: white;
+            color: var(--text-color);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .logo img {
-            max-width: 120px;
-            margin-bottom: 20px;
+            max-width: 200px;
+            margin-bottom: -40px;
         }
 
+        /* About Section Styles */
         #about {
             max-width: 600px;
             margin: 20px auto;
@@ -53,6 +76,7 @@
             border-radius: 10px;
         }
 
+        /* Sections (Buttons) Styles */
         #sections ul {
             list-style: none;
             padding: 0;
@@ -68,26 +92,45 @@
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #4CAF50; /* Green */
+            background-color: var(--primary-color);
             border: none;
             border-radius: 5px;
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             transition: background 0.3s ease;
-            cursor: pointer; /* Added cursor style */
+            cursor: pointer;
         }
 
         .button:hover {
-            background: #3e8e41; /* Darker Green on hover */
+            background: var(--hover-color);
         }
 
+        /* Footer Styles */
         #footer {
             margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            #sections ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo img {
+                max-width: 150px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body class="is-preload">
+    <!-- Wrapper -->
     <div id="wrapper">
+        <!-- Header -->
         <header id="header">
             <div class="logo">
                 <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="Blog Logo" />
@@ -99,29 +142,36 @@
             </div>
         </header>
 
+        <!-- Main Content -->
         <div id="main">
             <article id="about">
-                <span class="image main"><img src="assets/images/background.jpg" alt="About Us" /></span>
+                <span class="image main">
+                    <img src="{{ url_for('static', filename='assets/images/background.jpg') }}" alt="About Us Background Image" />
+                </span>
                 <p>We are a group of passionate writers and thinkers who love sharing our ideas on various topics. Our blog is a space for creativity, knowledge, and discussions that matter.</p>
             </article>
         </div>
 
+        <!-- Sections (Buttons) -->
         <section id="sections">
             <ul>
-                <li><a href="author1.html" class="button">Author 1</a></li>
-                <li><a href="author2.html" class="button">Author 2</a></li>
-                <li><a href="author3.html" class="button">Author 3</a></li>
+                <li><a href="author1.html" class="button" aria-label="Visit Author 1's Page">Author 1</a></li>
+                <li><a href="author2.html" class="button" aria-label="Visit Author 2's Page">Author 2</a></li>
+                <li><a href="author3.html" class="button" aria-label="Visit Author 3's Page">Author 3</a></li>
             </ul>
         </section>
 
+        <!-- Footer -->
         <footer id="footer">
             <p class="copyright">&copy; 2025 Our Blog. All rights reserved.</p>
         </footer>
     </div>
 
+    <!-- Background Image -->
     <div id="bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: url('{{ url_for('static', filename='assets/images/bg spd.jpg') }}') no-repeat center center fixed; background-size: cover;"></div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 </body>
 </html>
