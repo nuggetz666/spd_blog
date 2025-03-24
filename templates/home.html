@@ -27,7 +27,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: hidden; /* Only allow vertical scrolling */
             font-family: var(--font-main);
             line-height: 1.6;
         }
@@ -36,15 +36,17 @@
         #wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Align items from the top */
             align-items: center;
-            position: absolute;
-            inset: 0;
+            position: relative; /* Changed to relative for better positioning */
+            min-height: 100vh; /* Ensure full viewport height */
             padding: 2rem;
             text-align: center;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85));
             color: var(--text-color);
             z-index: 1;
+            overflow-y: auto; /* Enable vertical scroll */
+
         }
 
         /* Header Styles */
@@ -58,7 +60,8 @@
 
         .logo img {
             max-width: 200px;
-            margin-bottom: 1rem;
+            margin-top: -100px; /* Negative margin to move logo up */
+            margin-bottom: 2rem;
             transition: transform 0.3s ease;
         }
 
