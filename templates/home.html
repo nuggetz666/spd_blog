@@ -1,119 +1,105 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+<head>
     <title>Our Blog</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-      /* Alignments for better structure */
-      #wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-      }
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-      .logo img {
-        max-width: 120px;
-        margin-bottom: 20px;
-      }
+        .logo img {
+            max-width: 120px;
+            margin-bottom: 20px;
+        }
 
-      #about {
-        max-width: 600px;
-        margin: 20px auto;
-      }
+        #about {
+            max-width: 600px;
+            margin: 20px auto;
+        }
 
-      .image.main img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-      }
+        .image.main img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-      #sections ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-      }
+        #sections ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-      #sections ul li {
-        display: inline;
-      }
+        #sections ul li {
+            display: inline;
+        }
 
-      .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
-        color: #fff;
-        text-decoration: none;
-        transition: background 0.3s ease;
-      }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
 
-      .button:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
 
-      #footer {
-        margin-top: 20px;
-      }
+        #footer {
+            margin-top: 20px;
+        }
     </style>
-  </head>
-  <body class="is-preload">
-
-    <!-- Wrapper -->
+</head>
+<body class="is-preload">
     <div id="wrapper">
+        <header id="header">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Blog Logo" />
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Welcome to Our Blog</h1>
+                </div>
+            </div>
+        </header>
 
-      <!-- Header -->
-      <header id="header">
-        <div class="logo">
-          <img src="assets/images/logo.png" alt="Blog Logo" />
+        <div id="main">
+            <article id="about">
+                <span class="image main"><img src="assets/images/background.jpg" alt="About Us" /></span>
+                <p>We are a group of passionate writers and thinkers who love sharing our ideas on various topics. Our blog is a space for creativity, knowledge, and discussions that matter.</p>
+            </article>
         </div>
-        <div class="content">
-          <div class="inner">
-            <h1>Welcome to Our Blog</h1>
-          </div>
-        </div>
-      </header>
 
-      <!-- Main -->
-      <div id="main">
+        <section id="sections">
+            <ul>
+                <li><a href="author1.html" class="button">Author 1</a></li>
+                <li><a href="author2.html" class="button">Author 2</a></li>
+                <li><a href="author3.html" class="button">Author 3</a></li>
+            </ul>
+        </section>
 
-        <!-- About Us -->
-        <article id="about">
-          <span class="image main"><img src="assets/images/background.jpg" alt="About Us" /></span>
-          <p>We are a group of passionate writers and thinkers who love sharing our ideas on various topics. Our blog is a space for creativity, knowledge, and discussions that matter.</p>
-        </article>
-
-      </div>
-
-      <!-- Sections for Authors -->
-      <section id="sections">
-        <div style="margin: 20px;">
-          <button onclick="window.location.href='author1.html'">Author 1</button>
-          <button onclick="window.location.href='author2.html'">Author 2</button>
-          <button onclick="window.location.href='author3.html'">Author 3</button>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; 2025 Our Blog. All rights reserved.</p>
-      </footer>
-
+        <footer id="footer">
+            <p class="copyright">&copy; 2025 Our Blog. All rights reserved.</p>
+        </footer>
     </div>
 
-    <!-- BG -->
     <div id="bg"></div>
 
-    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-  </body>
+</body>
 </html>
+
