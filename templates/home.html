@@ -10,7 +10,7 @@
     <!-- Title -->
     <title>spd_blog</title>
 
-    <!-- Favicon -->
+    <!--icon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo.png') }}">
 
     <!-- Inline CSS -->
@@ -27,7 +27,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Only allow vertical scrolling */
+            overflow-x: hidden;
             font-family: var(--font-main);
             line-height: 1.6;
         }
@@ -36,17 +36,16 @@
         #wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align items from the top */
+            justify-content: flex-start;
             align-items: center;
-            position: relative; /* Changed to relative for better positioning */
-            min-height: 100vh; /* Ensure full viewport height */
+            position: relative;
+            min-height: 100vh;
             padding: 2rem;
             text-align: center;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85));
             color: var(--text-color);
             z-index: 1;
-            overflow-y: auto; /* Enable vertical scroll */
-
+            overflow-y: auto;
         }
 
         /* Header Styles */
@@ -60,8 +59,8 @@
 
         .logo img {
             max-width: 200px;
-            margin-top: -100px; /* Negative margin to move logo up */
-            margin-bottom: 2rem;
+            margin-top: -50px;
+            margin-bottom: -2rem;
             transition: transform 0.3s ease;
         }
 
@@ -81,18 +80,10 @@
             opacity: 0.9;
         }
 
-        /* Sections (Buttons) Styles */
-        #sections ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .button {
+        /* Read More Button */
+        .read-more {
             display: inline-block;
+            margin-top: 0.rem;
             padding: 0.8rem 1.5rem;
             background-color: transparent;
             border: 2px solid var(--accent-color);
@@ -101,12 +92,51 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
+            cursor: pointer;
         }
 
-        .button:hover {
+        .read-more:hover {
             background-color: var(--accent-color);
             transform: translateY(-2px);
         }
+
+
+        /* Author Profiles */
+        .authors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 8rem;
+        }
+
+        .author {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .author img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        .author h3 {
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .author p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .author a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+       
 
         /* Footer Styles */
         #footer {
@@ -120,15 +150,6 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
-            }
-
-            #sections ul {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .button {
-                width: 200px;
             }
 
             #about p {
@@ -158,16 +179,39 @@
             <article id="about">
                 <p>Welcome to our space for creative thinking and meaningful discussions. Join us in exploring new ideas and perspectives.</p>
             </article>
+             <a href="#about" class="read-more">Read More</a>
         </div>
 
-        <!-- Sections (Buttons) -->
-        <section id="sections">
-            <ul>
-                <li><a href="author1.html" class="button" aria-label="Visit Author 1's Page">Author 1</a></li>
-                <li><a href="author2.html" class="button" aria-label="Visit Author 2's Page">Author 2</a></li>
-                <li><a href="author3.html" class="button" aria-label="Visit Author 3's Page">Author 3</a></li>
-            </ul>
+
+        <!-- Author Profiles -->
+        <section class="authors">
+            <div class="author">
+                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 1">
+                <h3>Author 1</h3>
+                <p>Writes about philosophy and critical thinking.</p>
+                <a href="author1.html">View Profile</a>
+            </div>
+            <div class="author">
+                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 2">
+                <h3>Author 2</h3>
+                <p>Explores technology and innovation.</p>
+                <a href="author2.html">View Profile</a>
+            </div>
+            <div class="author">
+                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 3">
+                <h3>Author 3</h3>
+                <p>Focuses on literature and storytelling.</p>
+                <a href="author3.html">View Profile</a>
+            </div>
+            <div class="author">
+                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 4">
+                <h3>Author 4</h3>
+                <p>Writes about science and deep research.</p>
+                <a href="author4.html">View Profile</a>
+            </div>
         </section>
+
+        
 
         <!-- Footer -->
         <footer id="footer">
