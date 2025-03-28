@@ -1,17 +1,39 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>SPD_BLOG</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Welcome to Our Blog - A space for creativity, knowledge, and discussions." />
+    <meta name="author" content="Your Name or Organization" />
+
+    <!-- Title -->
+    <title>spd_blog</title>
+
+    <!--icon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo.png') }}">
+
+    <!-- Inline CSS -->
     <style>
+        /* CSS Variables */
         :root {
-            --accent: #6C5CE7;
-            --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.8);
+            --primary-color: #2D3436;
+            --accent-color: #0984E3;
+            --text-color: #FFFFFF;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        
+        
         /* Wrapper Styles */
         #wrapper {
             display: flex;
@@ -97,23 +119,26 @@
             max-width: 200px;
             margin-top: -50px;
             margin-bottom: -2rem;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 8px var(--accent-color));
         }
 
         .logo img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
         }
 
         /* About Section (Original) */
         #about {
             max-width: 600px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         #about p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            line-height: 1.8;
+            margin: 0;
         }
 
         /* Authors - Original Style (No Background) */
