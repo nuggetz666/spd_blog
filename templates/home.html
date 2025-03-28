@@ -1,35 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Welcome to Our Blog - A space for creativity, knowledge, and discussions." />
-    <meta name="author" content="Your Name or Organization" />
-
-    <!-- Title -->
-    <title>spd_blog</title>
-
-    <!--icon -->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo.png') }}">
-
-    <!-- Inline CSS -->
+    <title>SPD_BLOG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables */
         :root {
-            --primary-color: #2D3436;
-            --accent-color: #0984E3;
-            --text-color: #FFFFFF;
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        /* Global Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: var(--font-main);
-            line-height: 1.6;
+            --accent: #6C5CE7;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
         }
 
         /* Wrapper Styles */
@@ -48,8 +28,7 @@
             overflow-y: auto;
         }
 
-
-         /* Navigation Styles */
+        /* Navigation */
         .nav-bar {
             position: fixed;
             top: 13.5%;
@@ -70,7 +49,7 @@
             display: block;
             width: 15px;
             height: 2px;
-            background: var(--text-color);
+            background: var(--text-primary);
             border-radius: 3px;
         }
 
@@ -87,31 +66,28 @@
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 300;
             letter-spacing: 1px;
-            transition: all 0.2s ease;
             padding: 0.5rem 1.5rem;
             border-radius: 12px;
             text-transform: uppercase;
+            transition: all 0.2s ease;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
             transform: translateX(-5px);
         }
 
-        /* Header Styles */
+        /* Header (Original) */
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             margin: 1rem 0;
-            color: var(--text-color);
         }
 
         .logo img {
@@ -125,7 +101,7 @@
             transform: scale(1.05);
         }
 
-        /* About Section Styles */
+        /* About Section (Original) */
         #about {
             max-width: 600px;
             margin: 2rem auto;
@@ -137,8 +113,7 @@
             opacity: 0.9;
         }
 
-
-        /* Author Profiles */
+        /* Authors - Original Style (No Background) */
         .authors {
             display: flex;
             flex-wrap: wrap;
@@ -150,6 +125,11 @@
         .author {
             text-align: center;
             max-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .author:hover {
+            transform: translateY(-5px);
         }
 
         .author img {
@@ -157,6 +137,8 @@
             height: 120px;
             border-radius: 50%;
             margin-bottom: 0.5rem;
+            border: 3px solid var(--accent);
+            object-fit: cover;
         }
 
         .author h3 {
@@ -169,13 +151,12 @@
         }
 
         .author a {
-            color: var(--accent-color);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
         }
-       
 
-        /* Footer Styles */
+        /* Footer (Original) */
         #footer {
             margin-top: auto;
             padding: 1rem;
@@ -183,15 +164,21 @@
             opacity: 0.7;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+        /* Background Image (Original) */
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('{{ url_for('static', filename='assets/images/bg spd.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+        }
 
-            #about p {
-                font-size: 1rem;
-            }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .authors { gap: 2rem; margin-top: 5rem; }
         }
     </style>
 </head>
@@ -261,7 +248,7 @@
             </div>
         </section>
 
-        
+
 
         <!-- Footer -->
         <footer id="footer">
