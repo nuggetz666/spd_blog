@@ -48,6 +48,41 @@
             overflow-y: auto;
         }
 
+
+         /* Navigation Styles */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.404);
+            backdrop-filter: blur(1px);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         /* Header Styles */
         h1 {
             font-size: 2.5rem;
@@ -116,7 +151,7 @@
             text-decoration: none;
             font-weight: 500;
         }
-
+       
 
         /* Footer Styles */
         #footer {
@@ -124,40 +159,6 @@
             padding: 1rem;
             font-size: 0.9rem;
             opacity: 0.7;
-        }
-
-        /* Navigation Styles */
-        .nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive Styles */
@@ -172,18 +173,17 @@
         }
     </style>
 </head>
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#discover">Discover</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
+<!-- Navigation -->
+<nav class="nav-bar">
+    <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#discover">Discover</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+<body class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
-<body class="is-preload">
         <!-- Header -->
         <header id="header">
             <div class="logo">
@@ -202,6 +202,8 @@
             <article id="about">
                 <p>Welcome to our space for creative thinking and meaningful discussions. Join us in exploring new ideas and perspectives.</p>
             </article>
+             <a href="#about"</a>
+        </div>
 
 
         <!-- Author Profiles -->
@@ -232,7 +234,7 @@
             </div>
         </section>
 
-
+        
 
         <!-- Footer -->
         <footer id="footer">
