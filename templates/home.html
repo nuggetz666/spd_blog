@@ -111,50 +111,35 @@
         .author-card {
             width: 100%;
             background: rgba(42, 47, 74, 0.3);
-            margin: 2em 0;
-            border-radius: 15px;
+            padding: 3em;
+            margin: 0;
             display: flex;
-            align-items: stretch;
+            align-items: center;
             text-align: left;
-            transition: transform 0.3s ease-in-out;
-            overflow: hidden;
-            min-height: 400px;
+            transition: transform 0.2s ease-in-out;
+            border-bottom: 2px solid #1e2235;
+        }
+        .author-card:last-child {
+            border-bottom: none;
+        }
+        .author-card:nth-child(even) {
+            flex-direction: row-reverse;
         }
         .author-card:hover {
-            transform: translateY(-10px);
+            background: rgba(42, 47, 74, 0.5);
         }
         .author-card img {
-            width: 40%;
-            height: auto;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-            margin: 0;
+            margin-right: 2em;
+        }
+        .author-card:nth-child(even) img {
+            margin-right: 0;
+            margin-left: 2em;
         }
         .author-info {
             flex: 1;
-            padding: 3em;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: rgba(36, 41, 67, 0.7);
-        }
-        .author-info h3 {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-        }
-        .author-info p {
-            font-size: 1.1em;
-            margin-bottom: 2em;
-            line-height: 1.6;
-        }
-        .author-info a {
-            align-self: flex-start;
-            padding: 0.8em 2em;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        .author-info a:hover {
-            background: rgba(255, 255, 255, 0.2);
         }
         .author-card a {
             color: #9bf1ff;
@@ -519,21 +504,27 @@
                 </div>
                 <div class="author-card">
                     <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 2">
-                    <h3>Author Two</h3>
-                    <p>Specializes in creative writing and storytelling.</p>
-                    <a href="/authors/author2">View Profile</a>
+                    <div class="author-info">
+                        <h3>Author Two</h3>
+                        <p>Specializes in creative writing and storytelling.</p>
+                        <a href="/authors/author2">View Profile</a>
+                    </div>
                 </div>
                 <div class="author-card">
                     <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 3">
-                    <h3>Author Three</h3>
-                    <p>Explores science, history, and research-based content.</p>
-                    <a href="/authors/author3">View Profile</a>
+                    <div class="author-info">
+                        <h3>Author Three</h3>
+                        <p>Explores science, history, and research-based content.</p>
+                        <a href="/authors/author3">View Profile</a>
+                    </div>
                 </div>
                 <div class="author-card">
                     <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 4">
-                    <h3>Author Four</h3>
-                    <p>Focuses on social issues, politics, and global trends.</p>
-                    <a href="/authors/author4">View Profile</a>
+                    <div class="author-info">
+                        <h3>Author Four</h3>
+                        <p>Focuses on social issues, politics, and global trends.</p>
+                        <a href="/authors/author4">View Profile</a>
+                    </div>
                 </div>
             </section>
 
