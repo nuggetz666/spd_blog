@@ -1,300 +1,531 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Welcome to Our Blog - A space for creativity, knowledge, and discussions." />
-    <meta name="author" content="Your Name or Organization" />
-
-    <!-- Title -->
-    <title>spd_blog</title>
-
-    <!--icon -->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/logo.png') }}">
-
-    <!-- Inline CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Site</title>
     <style>
-        /* CSS Variables */
-        :root {
-            --primary-color: #2D3436;
-                --accent-color: #0984E3;
-                --text-color: #FFFFFF;
-                --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        /* Reset and Base Styles */
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        body {
+            line-height: 1;
+            background: url('assets/images/spd-bg.img') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: "Source Sans Pro", Helvetica, sans-serif;
+            font-size: 17pt;
+            font-weight: 300;
+            letter-spacing: 0.025em;
+            -ms-overflow-style: scrollbar;
+        }
+
+        @media screen and (max-width: 1680px) {
+            body {
+                font-size: 14pt;
             }
         }
 
-        /* Global Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: var(--font-main);
-            line-height: 1.6;
+        @media screen and (max-width: 1280px) {
+            body {
+                font-size: 12pt;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            body {
+                font-size: 11pt;
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.65;
+            margin: 0 0 1em 0;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 1.75em; }
+        h3 { font-size: 1.35em; }
+        h4 { font-size: 1.1em; }
+        h5 { font-size: 0.9em; }
+        h6 { font-size: 0.7em; }
+
+        @media screen and (max-width: 736px) {
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.5em; }
+        h3 { font-size: 1.25em; }
+    }
+
+        /*a style */
+        a {
+            border-bottom: dotted 1px;
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+        }
+
+        a:hover {
+            border-bottom-color: transparent;
+            color: #9bf1ff !important;
         }
 
 
 
-        /* Wrapper Styles */
-        #wrapper {
+        /*logo style */
+        #logo-container {
+            width: 100%;
+            text-align: center;
+            padding: 3em 0;
+        }
+
+        #logo-container img {
+            max-width: 250px; /* Adjust size as needed */
+            height: auto;
+            opacity: 0.9; /* Slight transparency */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+
+
+
+        /*Author cards*/
+        #author-section {
+            display: none;
+            position: relative;
+            top: 100vh;
+            width: 100%;
+            background: rgba(42, 47, 74, 0.8);
+        }
+        .author-card {
+            width: 100%;
+            background: #2a2f4a;
+            padding: 3em;
+            margin: 0;
+            border-radius: 0;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
+            text-align: left;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-bottom: 2px solid #1e2235;
+        }
+        .author-card:last-child {
+            border-bottom: none;
+        }
+        .author-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .author-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+        .author-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 2em;
+        }
+        .author-card:nth-child(even) img {
+            margin-right: 0;
+            margin-left: 2em;
+        }
+        .author-card .author-info {
+            flex: 1;
+        }
+        .author-card a {
+            color: #9bf1ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        @media screen and (max-width: 736px) {
+            .author-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2em;
+            }
+            .author-card img {
+                margin: 0 0 1em 0;
+            }
+            .author-card:nth-child(even) img {
+                margin-left: 0;
+            }
+        }
+
+
+
+
+        /* Layout Components */
+        #wrapper {
+            padding-top: 3.25em;
+            background: rgba(36, 41, 67, 0.8)
+        }
+
+        #header {
+            background: rgba(36, 41, 67, 0.8);
+            box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.15);
+            font-weight: 600;
+            height: 3.25em;
+            left: 0;
+            letter-spacing: 0.25em;
+            line-height: 3.25em;
+            margin: 0;
+            position: fixed;
+            text-transform: uppercase;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+            display: flex;
+        }
+
+        #header .logo {
+            border: 0;
+            display: inline-block;
+            font-size: 0.8em;
+            height: inherit;
+            line-height: inherit;
+            padding: 0 1.5em;
+        }
+
+        #header .logo strong {
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            background-color: #ffffff;
+            color: #242943;
+            display: inline-block;
+            line-height: 1.65em;
+            margin-right: 0.325em;
+            padding: 0 0.125em 0 0.375em;
+        }
+
+        #header .logo:hover strong {
+            background-color: #9bf1ff;
+        }
+
+        /* Banner */
+        #banner {
+            align-items: center;
+            display: flex;
+            padding: 6em 0 2em 0;
+            background: rgba(36, 41, 67, 0.8);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-bottom: 0 !important;
+            cursor: default;
+            height: 60vh;
+            margin-bottom: -3.25em;
+            max-height: 32em;
+            min-height: 22em;
+            position: relative;
+            top: -3.25em;
+        }
+
+        #banner:after {
+            background-color: #242943;
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0.85;
             position: absolute;
             top: 0;
-            left: 0;
             width: 100%;
-            min-height: 100vh;
-            padding: 2rem;
-            text-align: center;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85));
-            color: var(--text-color);
             z-index: 1;
+        }
+
+        #banner > .inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Main Content */
+        #main {
+            background: rgba(36, 41, 67, 0.8);
+            padding: 4em 0;
+        }
+
+        /* Tiles */
+        .tiles {
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 0 !important;
+        }
+
+        .tiles article {
+            align-items: center;
+            display: flex;
+            padding: 4em 4em 2em 4em;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: default;
+            height: 40vh;
+            max-height: 40em;
+            min-height: 23em;
+            overflow: hidden;
+            position: relative;
+            width: 40%;
+        }
+
+        /* Buttons */
+        .button {
+            border: 0;
+            border-radius: 0;
+            box-shadow: inset 0 0 0 2px #ffffff;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 600;
+            height: 3.5em;
+            letter-spacing: 0.25em;
+            line-height: 3.5em;
+            padding: 0 1.75em;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            white-space: nowrap;
+            background-color: transparent;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .button:hover {
+            box-shadow: inset 0 0 0 2px #9bf1ff;
+            color: #9bf1ff;
+        }
+
+        .button.primary {
+            background-color: #ffffff;
+            box-shadow: none;
+            color: #242943;
+        }
+
+        .button.primary:hover {
+            background-color: #9bf1ff;
+            color: #242943 !important;
+        }
+
+        /* Menu Toggle */
+        #menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: rgba(36, 41, 67, 0.9);
+            padding: 3em 2em;
+            z-index: 10001;
             overflow-y: auto;
         }
 
-        /* Navigation */
-        .nav-bar {
-            position: fixed;
-            top: 13.5%;
-            right: 2rem;
-            transform: translateY(-50%);
-            z-index: 1000;
-        }
-
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .hamburger span {
+        #menu:target {
             display: block;
-            width: 15px;
-            height: 2px;
-            background: var(--text-color);
-            border-radius: 3px;
         }
 
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: 1rem;
-            margin-top: 10px;
+        .menu-close {
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            font-size: 1.5em;
+            color: white;
         }
 
-        .nav-bar:hover .nav-links {
-            display: flex;
+        /* Menu Links */
+        .links {
+            list-style: none;
+            padding: 0;
         }
 
-        .nav-links a {
-            color: var(--text-color);
+        .links li {
+            border-top: 1px solid rgba(212, 212, 255, 0.1);
+            padding: 0.5em 0;
+        }
+
+        .links li:first-child {
+            border-top: none;
+        }
+
+        .links a {
+            color: white;
             text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 0.8em;
             font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            display: block;
+            padding: 0.5em 0;
         }
 
-        .nav-links a.active {
-            color: var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(-5px);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-            transform: translateX(-5px);
-        }
-
-        /* Header styles */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--text-color);
-            text-shadow: 3px 3px 0 #000;
-            letter-spacing: 0;
-        }
-
-        .logo img {
-            max-width: 200px;
-            margin-top: -50px;
-            margin-bottom: -2rem;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 0 8px var(--accent-color));
-        }
-
-        .logo img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        /* About Section (Original) */
-        #about {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        #about p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        /* Authors - Original Style (No Background) */
-        .authors {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 8rem;
-        }
-
-        .author {
-            text-align: center;
-            max-width: 250px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        .author:hover {
-            transform: translateY(-5px);
-        }
-
-        .author img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 0.5rem;
-            border: 3px solid var(--accent);
-            object-fit: cover;
-        }
-
-        .author h3 {
-            margin: 0.5rem 0 0.2rem;
-        }
-
-        .author p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .author a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Footer (Original) */
-        #footer {
-            margin-top: auto;
-            padding: 1rem;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* Background Image (Original) */
-        #bg {
+        /* Overlay when menu is open */
+        #menu-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: url('{{ url_for('static', filename='assets/images/bg spd.jpg') }}') no-repeat center center fixed;
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .authors { gap: 2rem; margin-top: 5rem; }
+        #menu:target ~ #menu-overlay {
+            display: block;
+        }
+
+        /* Click overlay to close menu */
+        #menu-overlay {
+            cursor: pointer;
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 736px) {
+            #wrapper {
+                padding-top: 2.75em;
+            }
+
+            #header {
+                height: 2.75em;
+                line-height: 2.75em;
+            }
+
+            #banner {
+                padding: 5em 0 1em 0;
+                height: auto;
+                margin-bottom: -2.75em;
+                max-height: none;
+                min-height: 0;
+                top: -2.75em;
+            }
+
+            #banner h1 {
+                font-size: 2em;
+            }
+
+            .tiles article {
+                width: 100% !important;
+                height: 20em;
+                padding: 3em 1.5em 1em 1.5em;
+            }
+
+            #menu {
+                width: 100%;
+            }
         }
     </style>
 </head>
-<!-- Navigation -->
-<nav class="nav-bar">
-    <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="nav-links">
-        <a href="#" class="active">Home</a>
-        <a href="#discover">Discover</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
-<body class="is-preload">
+<body>
     <!-- Wrapper -->
     <div id="wrapper">
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="Blog Logo" />
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>SPD Blog</h1>
-                    <p>Exploring Ideas, Sharing Knowledge</p>
-                </div>
-            </div>
-        </header>
 
-        <!-- Main Content -->
-        <div id="main">
-            <article id="about">
-                <p>Welcome to our space for creative thinking and meaningful discussions. Join us in exploring new ideas and perspectives.</p>
-            </article>
-             <a href="#about"></a>
+        <!-- Logo -->
+        <div id="logo-container">
+            <img src="assets/images/logo.png" alt="SPD Logo">
         </div>
 
+        <!-- Header -->
+        <header id="header" class="alt">
+            <a href="/" class="logo"><strong>MySite</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
 
-        <!-- Author Profiles -->
-        <section class="authors">
-            <div class="author">
-                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 1">
-                <h3>Author 1</h3>
-                <p>Writes about philosophy and critical thinking.</p>
-                <a href="author1.html">View Profile</a>
-            </div>
-            <div class="author">
-                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 2">
-                <h3>Author 2</h3>
-                <p>Explores technology and innovation.</p>
-                <a href="author2.html">View Profile</a>
-            </div>
-            <div class="author">
-                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 3">
-                <h3>Author 3</h3>
-                <p>Focuses on literature and storytelling.</p>
-                <a href="author3.html">View Profile</a>
-            </div>
-            <div class="author">
-                <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 4">
-                <h3>Author 4</h3>
-                <p>Writes about science and deep research.</p>
-                <a href="author4.html">View Profile</a>
+        <!-- Menu -->
+        <nav id="menu">
+            <a href="#" class="menu-close">×</a>
+            <ul class="links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/discover">Discover</a></li>
+                <li><a href="/authors">Authors</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Menu Overlay -->
+        <div id="menu-overlay"></div>
+
+        <!-- Banner -->
+        <section id="banner" class="major" style="background-image: url('assets/images/banner.jpg');">
+            <div class="inner">
+                <header class="major">
+                    <h1>Welcome to My Site</h1>
+                </header>
+                <div class="content">
+                    <p>Discover amazing content and connect with talented authors</p>
+                    <ul class="actions">
+                        <li><a href="#one" class="button next">Explore Now</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
+        <!-- Main Content -->
+        <div id="main">
+            <!-- Featured Content Section -->
+            <section id="one" class="tiles">
+                <div class="author-card">
+                    <img src="assets/images/author1.jpg" alt="Author 1">
+                    <h3>Author One</h3>
+                    <p>Writes about technology, philosophy, and innovation.</p>
+                    <a href="/authors/author1">View Profile</a>
+                </div>
+                <div class="author-card">
+                    <img src="assets/images/author2.jpg" alt="Author 2">
+                    <h3>Author Two</h3>
+                    <p>Specializes in creative writing and storytelling.</p>
+                    <a href="/authors/author2">View Profile</a>
+                </div>
+                <div class="author-card">
+                    <img src="assets/images/author3.jpg" alt="Author 3">
+                    <h3>Author Three</h3>
+                    <p>Explores science, history, and research-based content.</p>
+                    <a href="/authors/author3">View Profile</a>
+                </div>
+                <div class="author-card">
+                    <img src="assets/images/author4.jpg" alt="Author 4">
+                    <h3>Author Four</h3>
+                    <p>Focuses on social issues, politics, and global trends.</p>
+                    <a href="/authors/author4">View Profile</a>
+                </div>
+            </section>
 
+
+            <!-- About Section -->
+            <section id="two">
+                <div class="inner">
+                    <header class="major">
+                        <h2>About Our Platform</h2>
+                    </header>
+                    <p>We are dedicated to connecting readers with quality content and the authors behind them. Our platform showcases a diverse range of topics and perspectives, carefully curated for your enjoyment and education.</p>
+                    <ul class="actions">
+                        <li><a href="/discover" class="button next">Learn More</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
 
         <!-- Footer -->
         <footer id="footer">
-            <p class="copyright">&copy; 2025 Our Blog. All rights reserved.</p>
+            <div class="inner">
+                <ul class="copyright">
+                    <li>&copy; MySite. All rights reserved.</li>
+                </ul>
+            </div>
         </footer>
     </div>
-
-    <!-- Background Image -->
-    <div id="bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: url('{{ url_for('static', filename='assets/images/bg spd.jpg') }}') no-repeat center center fixed; background-size: cover;"></div>
 </body>
 </html>
