@@ -432,20 +432,6 @@
             }
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const exploreButton = document.querySelector('a[href="#one"]');
-            
-            exploreButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetSection = document.querySelector('#one');
-                targetSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Wrapper -->
