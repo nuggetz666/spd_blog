@@ -105,46 +105,56 @@
 
         /*Author cards*/
         #author-section {
-            display: none;
-            position: relative;
-            top: 100vh;
             width: 100%;
             background: rgba(42, 47, 74, 0.8);
         }
         .author-card {
             width: 100%;
             background: rgba(42, 47, 74, 0.3);
-            padding: 3em;
-            margin: 0;
-            border-radius: 0;
+            margin: 2em 0;
+            border-radius: 15px;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             text-align: left;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            border-bottom: 2px solid #1e2235;
-        }
-        .author-card:last-child {
-            border-bottom: none;
-        }
-        .author-card:nth-child(even) {
-            flex-direction: row-reverse;
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+            min-height: 400px;
         }
         .author-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
         }
         .author-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 2em;
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+            margin: 0;
         }
-        .author-card:nth-child(even) img {
-            margin-right: 0;
-            margin-left: 2em;
-        }
-        .author-card .author-info {
+        .author-info {
             flex: 1;
+            padding: 3em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(36, 41, 67, 0.7);
+        }
+        .author-info h3 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+        .author-info p {
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            line-height: 1.6;
+        }
+        .author-info a {
+            align-self: flex-start;
+            padding: 0.8em 2em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .author-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
         .author-card a {
             color: #9bf1ff;
@@ -501,9 +511,11 @@
             <section id="one" class="tiles">
                 <div class="author-card">
                     <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 1">
-                    <h3>Author One</h3>
-                    <p>Writes about technology, philosophy, and innovation.</p>
-                    <a href="/authors/author1">View Profile</a>
+                    <div class="author-info">
+                        <h3>Author One</h3>
+                        <p>Writes about technology, philosophy, and innovation.</p>
+                        <a href="/authors/author1">View Profile</a>
+                    </div>
                 </div>
                 <div class="author-card">
                     <img src="{{ url_for('static', filename='assets/images/author.jpeg') }}" alt="Author 2">
