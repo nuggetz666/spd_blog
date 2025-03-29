@@ -285,9 +285,12 @@
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* Buttons */
         .button {
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
             border: 0;
             border-radius: 0;
             box-shadow: inset 0 0 0 2px #ffffff;
@@ -305,12 +308,25 @@
             text-transform: uppercase;
             white-space: nowrap;
             background-color: transparent;
-            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
         }
 
-        .button:hover {
-            box-shadow: inset 0 0 0 2px #9bf1ff;
-            color: #9bf1ff;
+        .button:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-out;
+            z-index: -1;
+        }
+
+        .button:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .button.primary {
