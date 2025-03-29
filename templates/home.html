@@ -110,29 +110,29 @@
         }
         .author-card {
             width: 100%;
-            background: rgba(42, 47, 74, 0.3);
+            background: linear-gradient(135deg, rgba(42, 47, 74, 0.4) 0%, rgba(36, 41, 67, 0.6) 100%);
             padding: 4em;
             margin: 0;
             display: flex;
             align-items: center;
             text-align: left;
             transition: all 0.3s ease-in-out;
-            border-bottom: 2px solid #1e2235;
+            border-bottom: 2px solid rgba(30, 34, 53, 0.3);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             min-height: 300px;
+            backdrop-filter: blur(5px);
         }
         .author-card:hover {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(42, 47, 74, 0.6) 0%, rgba(36, 41, 67, 0.8) 100%);
         }
         .author-card:last-child {
             border-bottom: none;
         }
         .author-card:nth-child(even) {
             flex-direction: row-reverse;
-        }
-        .author-card:hover {
-            background: rgba(42, 47, 74, 0.5);
+            background: linear-gradient(225deg, rgba(42, 47, 74, 0.4) 0%, rgba(36, 41, 67, 0.6) 100%);
         }
         .author-card img {
             width: 250px;
@@ -141,10 +141,11 @@
             margin-right: 2em;
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
+            border-radius: 10px;
+        }
         .author-card img:hover {
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-                transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            transform: scale(1.02);
         }
         .author-card:nth-child(even) img {
             margin-right: 0;
@@ -152,24 +153,35 @@
         }
         .author-info {
             flex: 1;
+            padding: 0 2em;
+        }
+        .author-info h3 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .author-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5em;
+            letter-spacing: 0.02em;
         }
         .author-card a {
+            display: inline-block;
             color: #9bf1ff;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+            padding: 0.5em 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
         }
-        @media screen and (max-width: 736px) {
-            .author-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 2em;
-            }
-            .author-card img {
-                margin: 0 0 1em 0;
-            }
-            .author-card:nth-child(even) img {
-                margin-left: 0;
-            }
+        .author-card a:hover {
+            border-bottom-color: #9bf1ff;
+            transform: translateX(5px);
         }
 
 
